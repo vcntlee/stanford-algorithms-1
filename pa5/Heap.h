@@ -41,7 +41,7 @@ class Heap{
         Heap(int inSize, int curSize);
         void initHeap(int inSize, int inSourceV);
 
-        Node extractMin();
+        int extractMin();
         void extractMinHelper(int i);
 
         void swapNode(int l, int r);

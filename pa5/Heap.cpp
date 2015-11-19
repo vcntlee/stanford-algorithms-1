@@ -36,20 +36,20 @@ void Heap::initHeap(int inSize, int inSourceV){
 }
 
         
-Node Heap::extractMin(){
+int Heap::extractMin(){
     Node minimum = container[0];
     swap(container[0], container[curSize]);
+    container[curSize].dist = numeric_limits<int>::max(); 
 
     extractMinHelper(0);
 
-    return minimum;
+    return minimum.dist;
 }
 
 void Heap::extractMinHelper(int i){
-    if (2*i+1 >= curSize){
-        return;
-    }
-    if (container[i] > container[2*i+1] || container[i] > container[2*i+2]){
+    if (i == curSize) return;
+    
+    else if (container[i] > container[2*i+1] || container[i] > container[2*i+2]){
         if (container[2*i+1] < container[2*i+2]){
             swap(container[i], container[2*i+1]);
             extractMinHelper(2*i+1);
@@ -80,11 +80,13 @@ void Heap::insertKey(Node node){
         insertKeyHelper(curSize);
     }
     curSize++;
+
 }        
 
 void Heap::insertKeyHelper(int i){
 
     if (i==0){
+        curSize--;
         return;
     }
 

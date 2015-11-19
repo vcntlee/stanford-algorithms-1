@@ -64,20 +64,16 @@ int main(){
     node4.dist = 280; node4.v = 4;
     node5.dist = 400; node5.v = 5;
 
-    cout << "inserting 500..." << endl;
     h.insertKey(node1);
-
-    cout<< "inserting 300..." <<endl;
     h.insertKey(node2);
-
-    cout << "inserting 700..."<<endl;
     h.insertKey(node3);
-
-    cout << "inserting 280..." << endl;
     h.insertKey(node4);
-
-    cout << "inserting 400..." << endl;
     h.insertKey(node5);
+    h.print();
+
+    int minimum = h.extractMin();
+
+    cout << "minimum is: " << minimum << endl;
 
     h.print();
 
