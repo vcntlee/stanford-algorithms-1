@@ -34,16 +34,14 @@ class Heap{
         int size;
         int curSize;
         int sourceV;
+        int iter;
         
-
     public:
 
         Heap(int inSize, int curSize);
         void initHeap(int inSize, int inSourceV);
-
         int extractMin();
         void extractMinHelper(int i);
-
         void swapNode(int l, int r);
         void insertKey(Node node);
         void insertKeyHelper(int i);
