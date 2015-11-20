@@ -72,9 +72,27 @@ int main(){
     h.print();
 
     int minimum = h.extractMin();
-
     cout << "minimum is: " << minimum << endl;
+    h.print();
 
+    minimum = h.extractMin();
+    cout << "minimum is: " << minimum <<endl;
+    h.print();
+
+    minimum = h.extractMin();
+    cout << "minimum is: " << minimum <<endl;
+    h.print();
+
+    minimum = h.extractMin();
+    cout << "minimum is: " << minimum <<endl;
+    h.print();
+
+    minimum = h.extractMin();
+    cout << "minimum is: " << minimum <<endl;
+    h.print();
+
+    minimum = h.extractMin();
+    cout << "minimum is: " << minimum <<endl;
     h.print();
 
 }
