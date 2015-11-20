@@ -4,8 +4,14 @@ short: dijkstra_algo.o Heap.o
 dijkstra_algo.o: dijkstra_algo.cpp Heap.cpp
 	g++ -c dijkstra_algo.cpp Heap.cpp
 
+main: main.o Heap.o
+	g++ main.o Heap.o -o main
+
+main.o: main.cpp Heap.cpp
+	g++ -c main.cpp Heap.cpp
+
 Heap.o: Heap.cpp
 	g++ -c Heap.cpp
 
 clean:
-	rm short a.* *.out *.o
+	rm short a.* *.out *.o main
