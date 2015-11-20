@@ -18,6 +18,10 @@ Heap::Heap(int inSize, int inCurSize){
     }
 }
 
+Heap::~Heap(){
+    delete[] container;
+}
+
 void Heap::initHeap(int inSize, int inSourceV){
     size = inSize;
     container = new Node[size];

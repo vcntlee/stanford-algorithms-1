@@ -39,6 +39,7 @@ class Heap{
     public:
 
         Heap(int inSize, int curSize);
+        ~Heap();
         void initHeap(int inSize, int inSourceV);
         int extractMin();
         void extractMinHelper(int i);
