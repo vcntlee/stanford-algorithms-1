@@ -24,6 +24,9 @@ struct Node{
     bool operator>(const Node& a){
         return a.dist < dist;
     }
+    bool operator+(const Node& a){
+        return a.dist+dist;
+    }
 
 };
 
@@ -38,14 +41,16 @@ class Heap{
         
     public:
 
-        Heap(int inSize, int curSize);
+        Heap(int inSize, int sourceV);
         ~Heap();
         void initHeap(int inSize, int inSourceV);
-        int extractMin();
+        int getCurSize();
+        Node extractMin();
         void extractMinHelper(int i);
         void swapNode(int l, int r);
         void insertKey(Node node);
         void insertKeyHelper(int i);
+        Node *getContainer();
 
         void print();
 

@@ -5,10 +5,10 @@
 #include "Heap.h"
 using namespace std;
 
-Heap::Heap(int inSize, int inCurSize){
+Heap::Heap(int inSize, int sourceV){
     size = inSize;
     iter = size -1;
-    curSize = inCurSize;
+    curSize = 0;
     container = new Node[size];
 
     int maxVal = numeric_limits<int>::max();
@@ -16,6 +16,11 @@ Heap::Heap(int inSize, int inCurSize){
         container[i].dist = maxVal;
         container[i].v = maxVal;
     }
+
+    Node source; 
+    source.dist = 0;
+    source.v = sourceV;
+    container[sourceV] = source;
 }
 
 Heap::~Heap(){
@@ -40,23 +45,26 @@ void Heap::initHeap(int inSize, int inSourceV){
     }
 }
 
+int Heap::getCurSize(){
+    return curSize;
+}
+
         
-int Heap::extractMin(){
+Node Heap::extractMin(){
     Node minimum = container[0];
-    cout << "iter " << iter <<endl;
     swap(container[0], container[iter]);
     container[iter].dist = numeric_limits<int>::max(); 
-    cout << "c[iter] " << container[iter].dist << endl;
 
     extractMinHelper(0);
 
     iter--;
-
-    return minimum.dist;
+    curSize--;
+    
+    return minimum;
 }
 
 void Heap::extractMinHelper(int i){
-    if (i == curSize-1) return;
+    if (i == size-1) return;
     
     else if (container[i] > container[2*i+1] || container[i] > container[2*i+2]){
         if (container[2*i+1] < container[2*i+2]){
@@ -112,6 +120,10 @@ void Heap::insertKeyHelper(int i){
             insertKeyHelper(i/2-1);
         }
     }
+}
+
+Node *Heap::getContainer(){
+    return container;
 }
 
 void Heap::print(){
