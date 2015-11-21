@@ -18,29 +18,11 @@ int main(){
     h.insertKey(node5);
     h.print();
 
-    int minimum = h.extractMin();
-    cout << "minimum is: " << minimum << endl;
-    h.print();
+    Node *c = h.getContainer();   
 
-    minimum = h.extractMin();
-    cout << "minimum is: " << minimum <<endl;
-    h.print();
-
-    minimum = h.extractMin();
-    cout << "minimum is: " << minimum <<endl;
-    h.print();
-
-    minimum = h.extractMin();
-    cout << "minimum is: " << minimum <<endl;
-    h.print();
-
-    minimum = h.extractMin();
-    cout << "minimum is: " << minimum <<endl;
-    h.print();
-
-    minimum = h.extractMin();
-    cout << "minimum is: " << minimum <<endl;
-    h.print();
+    for (int i = 0; i < 5; i++){
+        cout << c[i].dist << " " << endl;
+    }
 
 }
 
