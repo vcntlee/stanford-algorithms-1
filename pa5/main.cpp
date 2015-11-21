@@ -2,27 +2,58 @@
 #include <iostream>
 
 int main(){
-    Heap h(5, 0);
+    Heap h(9, 1);
 
-    Node node1, node2, node3, node4, node5;
-    node1.dist = 500; node1.v = 1;
-    node2.dist = 300; node2.v = 2;
-    node3.dist = 700; node3.v = 3;
-    node4.dist = 280; node4.v = 4;
-    node5.dist = 400; node5.v = 5;
+    Node node1, node2, node3, node4, node5, node6, node7, node8;
 
-    h.insertKey(node1);
+    //first round
+    
+
+    //second round
+
+    //third round
+    
+
+
+    //************************first round
+    node2.dist = 20; node1.v = 2;
+    node4.dist = 80; node2.v = 4;
+    node7.dist = 90; node7.v = 7;
     h.insertKey(node2);
-    h.insertKey(node3);
     h.insertKey(node4);
-    h.insertKey(node5);
-    h.print();
+    h.insertKey(node7);
+    cout << "first before extraction:...\n";
+    h.print(); cout << endl;
 
-    Node *c = h.getContainer();   
+    h.extractMin();
+    cout << "first after extraction:...\n";
+    h.print(); cout << endl;
 
-    for (int i = 0; i < 5; i++){
-        cout << c[i].dist << " " << endl;
-    }
+
+    //**************************second round
+    node6.dist = 30; node6.v = 6;
+    h.insertKey(node6);
+    cout << "second before extraction:...\n";
+    h.print(); cout << endl;
+
+    h.extractMin();
+    cout << "second after extraction:...\n";
+    h.print(); cout << endl;
+
+
+    //***************************third round
+    node3.dist = 40; node3.v = 3;
+    node4.dist = 70; node4.v = 4;
+    h.insertKey(node3); 
+    h.insertKey(node4);
+    cout << "third before extraction:...\n";
+    h.print(); cout << endl;
+
+    h.extractMin();
+    cout << "third after extraction:...\n";
+    h.print(); cout << endl;
+
+
 
 }
 
