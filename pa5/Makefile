@@ -1,3 +1,9 @@
+nh: dijkstra_no_heap.o
+	g++ dijkstra_no_heap.o -o nh
+
+dijkstra_no_heap.o: dijkstra_no_heap.cpp
+	g++ -c dijkstra_no_heap.cpp
+
 short: dijkstra_algo.o Heap.o
 	g++ dijkstra_algo.o Heap.o -o short
 
@@ -14,4 +20,4 @@ Heap.o: Heap.cpp
 	g++ -c Heap.cpp
 
 clean:
-	rm short a.* *.out *.o main
+	rm short a.* *.out *.o main nh
