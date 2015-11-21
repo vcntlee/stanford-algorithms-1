@@ -42,15 +42,16 @@ class DijkstraSolution{
             infile.close();
             int maxVal = numeric_limits<int>::max();
             int *results = new int[size];
-            for (int i = 1; i < size; i++){
+            for (int i = 0; i < size; i++){
                 results[i] = maxVal;
             }
             results[sourceV] = 0;
+            
         }
-        ~DijkstraSolution(){
-            delete[] container;
-            delete[] results;
-        }
+        //~DijkstraSolution(){
+        //    delete[] container;
+        //    delete[] results;
+        //}
 
         int * dijkstra(){
             while (h.getCurSize() != 0){
@@ -90,7 +91,7 @@ class DijkstraSolution{
 };
 
 int main(){
-    DijkstraSolution ds("pa5_test1.txt", 1, 8);
+    DijkstraSolution ds("pa5_test2.txt", 1, 9);
 
     ds.dijkstra(); 
     ds.printResults();
