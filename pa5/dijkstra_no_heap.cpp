@@ -97,6 +97,7 @@ class DijkstraSolution{
             for (int i=1; i <= size; i++){
                 if (ch.minHeap[i] < minimum){
                     minimum = ch.minHeap[i];
+                    ch.minHeap[i].dist = numeric_limits<int>::max();
                 }
             }
             ch.curSize--;
