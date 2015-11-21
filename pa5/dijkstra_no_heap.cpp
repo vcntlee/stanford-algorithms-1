@@ -85,10 +85,7 @@ class DijkstraSolution{
             ch.minHeap[sourceV].v = sourceV;
             
         }
-        //~DijkstraSolution(){
-        //    delete[] container;
-        //    delete[] results;
-        //}
+        
 
         Node findMin(){
             Node minimum;
