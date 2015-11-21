@@ -138,6 +138,7 @@ class DijkstraSolution{
 int main(){
     DijkstraSolution ds("pa5_test2.txt", 1, 9);
 
+    ds.printContainer();
     ds.dijkstra(); 
     ds.printResults();
 
