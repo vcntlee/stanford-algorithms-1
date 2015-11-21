@@ -24,7 +24,7 @@ struct Node{
     bool operator>(const Node& a){
         return a.dist < dist;
     }
-    bool operator+(const Node& a){
+    int operator+(const Node& a){
         return a.dist+dist;
     }
 };
