@@ -2,6 +2,7 @@
 #include <sstream>
 #include <fstream>
 #include <list>
+#include <limits>
 
 using namespace std;
 
@@ -68,6 +69,7 @@ class DijkstraSolution{
                 }
             }
             infile.close();
+            
             int maxVal = numeric_limits<int>::max();
             int *results = new int[size];
 
@@ -80,6 +82,7 @@ class DijkstraSolution{
             }
             results[sourceV] = 0;
             ch.minHeap[sourceV].dist = 0;
+            ch.minHeap[sourceV].v = sourceV;
             
         }
         //~DijkstraSolution(){
