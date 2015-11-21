@@ -71,7 +71,7 @@ class DijkstraSolution{
             infile.close();
             
             int maxVal = numeric_limits<int>::max();
-            int *results = new int[size];
+            results = new int[size];
 
             ch.curSize = size-1; 
             ch.minHeap = new Node[size];
@@ -141,7 +141,6 @@ class DijkstraSolution{
 int main(){
     DijkstraSolution ds("pa5_test2.txt", 1, 9);
 
-    ds.printContainer();
     ds.dijkstra(); 
     ds.printResults();
 
