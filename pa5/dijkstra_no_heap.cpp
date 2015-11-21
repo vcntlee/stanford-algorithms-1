@@ -95,9 +95,9 @@ class DijkstraSolution{
             minimum.dist = numeric_limits<int>::max();
             
             for (int i=1; i <= size; i++){
-                if (ch.minHeap[i] < minimum){
+                if (ch.minHeap[i] < minimum && ch.minHeap[i].dist != -1){
                     minimum = ch.minHeap[i];
-                    ch.minHeap[i].dist = numeric_limits<int>::max();
+                    ch.minHeap[i].dist = -1;
                     ch.minHeap[i].v = i;
                 }
             }
