@@ -98,6 +98,7 @@ class DijkstraSolution{
                 if (ch.minHeap[i] < minimum){
                     minimum = ch.minHeap[i];
                     ch.minHeap[i].dist = numeric_limits<int>::max();
+                    ch.minHeap[i].v = i;
                 }
             }
             ch.curSize--;
@@ -112,8 +113,12 @@ class DijkstraSolution{
                 results[minimum.v] = minimum.dist; 
 
                 for (list<Node>::iterator it = container[minimum.v].begin(); it != container[minimum.v].end(); it++){
-                    if (*it < ch.minHeap[(*it).v]){
-                        ch.minHeap[(*it).v] = *it;
+                    if ((*it)+minimum < ch.minHeap[(*it).v].dist){
+                        Node inserted;
+                        inserted.dist = *it + minimum;
+                        inserted.v = (*it).v;
+                        ch.minHeap[(*it).v] = inserted;
+                        
                     }
                 }
             }
