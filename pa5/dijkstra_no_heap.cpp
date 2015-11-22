@@ -90,9 +90,10 @@ class DijkstraSolution{
         Node findMin(){
             Node minimum;
             minimum.dist = numeric_limits<int>::max();
+            minimum.v = 0;
             
             for (int i=1; i <= size; i++){
-                if (ch.minHeap[i] < minimum && ch.minHeap[i].dist != -1){
+                if ((ch.minHeap[i] < minimum) && (ch.minHeap[i].dist != -1)){
                     minimum = ch.minHeap[i];
                     ch.minHeap[i].dist = -1;
                     ch.minHeap[i].v = i;
