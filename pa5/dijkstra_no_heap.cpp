@@ -95,10 +95,10 @@ class DijkstraSolution{
             for (int i=1; i <= size; i++){
                 if ((ch.minHeap[i] < minimum) && (ch.minHeap[i].dist != -1)){
                     minimum = ch.minHeap[i];
-                    ch.minHeap[i].dist = -1;
-                    ch.minHeap[i].v = i;
+                    
                 }
             }
+            ch.minHeap[minimum.v].dist = -1;
             ch.curSize--;
             return minimum;
         }
