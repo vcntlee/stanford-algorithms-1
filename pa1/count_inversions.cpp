@@ -67,7 +67,7 @@ class CountInversions{
 
 int main(){
     //int input[] = {9,10,4,3};
-    int size = 10;
+    int size = 100000;
     //int size = 50;
     int input[size];
 
