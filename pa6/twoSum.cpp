@@ -106,7 +106,7 @@ int main(){
 //    }
 //    cout << endl;
 
-    int answer = countTargets(container, -10000, 10000, 20);
+    int answer = countTargets(container, -10000, 10000, size);
 
     cout << "answer: " << answer << endl;
 
