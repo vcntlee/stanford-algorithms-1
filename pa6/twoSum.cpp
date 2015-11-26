@@ -32,7 +32,7 @@ void swapped(long long *container, int left, int right){
 int pivoted(long long *container, int left, int right){
     int j = left; 
     for (int i = left; i < right; i++){
-        if (container[j] > container[right]){
+        if (container[i] <= container[right]){
             swapped(container, j, i);
             j++;
         }
@@ -42,7 +42,7 @@ int pivoted(long long *container, int left, int right){
 }
 
 long long * quickSort(long long *container, int left, int right){
-    if (left == right){
+    if (left >= right){
         return container;
     }
     else{
@@ -53,17 +53,41 @@ long long * quickSort(long long *container, int left, int right){
     }
 }
 
+int binarySearch(long long *container, long long suspect, int left, int right){
+    int mid = (left + right) / 2; 
+    if (container[mid] == suspect)
+        return mid;
+    else if (left >= right){
+        return -1;
+    }
+    else if (container[mid] < suspect){
+        return binarySearch(container, suspect, mid+1, right);
+    }
+    else{
+        return binarySearch(container, suspect, left, mid-1);
+    }
+
+}
+
 int main(){
-    string fname = "10.txt";
-    int size = 10;
-    //long long *container = new long long [1000000];
+    //string fname = "pa6_input.txt";
+    //int size = 1000000;
+    string fname = "pa6_minitest.txt";
+    int size =7;
     long long *container = new long long [size];
 
     container = readFile(fname, container); 
     container = quickSort(container, 0, size-1);
 
     for (int i = 0; i < size; i++){
-        cout << container[i] << endl;
+        cout << "(" << i << ", " << container[i] << ")" ;
     }
+    cout << endl;
+
+    int position = binarySearch(container, 17, 0, size-1);
+
+
+    cout << "search index: " << position << endl;
+
     return 0;
 }
