@@ -32,7 +32,7 @@ void swapped(long long *container, int left, int right){
 int pivoted(long long *container, int left, int right){
     int j = left; 
     for (int i = left; i < right; i++){
-        if (container[j] > container[i]){
+        if (container[j] > container[right]){
             swapped(container, j, i);
             j++;
         }
@@ -54,8 +54,8 @@ long long * quickSort(long long *container, int left, int right){
 }
 
 int main(){
-    string fname = "100.txt";
-    int size = 100;
+    string fname = "10.txt";
+    int size = 10;
     //long long *container = new long long [1000000];
     long long *container = new long long [size];
 
