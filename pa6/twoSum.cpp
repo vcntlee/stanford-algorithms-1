@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <set>
 
 using namespace std;
 
@@ -53,12 +54,12 @@ long long * quickSort(long long *container, int left, int right){
     }
 }
 
-int binarySearch(long long *container, long long suspect, int left, int right){
+bool binarySearch(long long *container, long long suspect, int left, int right){
     int mid = (left + right) / 2; 
     if (container[mid] == suspect)
-        return mid;
+        return true;
     else if (left >= right){
-        return -1;
+        return false;
     }
     else if (container[mid] < suspect){
         return binarySearch(container, suspect, mid+1, right);
@@ -69,25 +70,45 @@ int binarySearch(long long *container, long long suspect, int left, int right){
 
 }
 
+int countTargets(long long *container, int lowerRange, int upperRange, int containerSize){
+    set<int> targets;
+    for (int i = 0; i < containerSize; i++){
+        for (int j=lowerRange; j <= upperRange; j++){
+            int result = j - container[i]; 
+            if (result > container[i]){
+                if (binarySearch(container, result, i+1, containerSize-1)){
+                    targets.insert(j); 
+                }
+            }
+            else {
+                if (binarySearch(container, result, 0, i-1)){
+                    targets.insert(j);
+                }
+            }
+        }
+    }
+    return targets.size();
+}
+
+
 int main(){
-    //string fname = "pa6_input.txt";
-    //int size = 1000000;
-    string fname = "pa6_minitest.txt";
-    int size =7;
+    string fname = "pa6_input.txt";
+    int size = 1000000;
+    //string fname = "pa6_test_q1.txt";
+    //int size =20;
     long long *container = new long long [size];
 
     container = readFile(fname, container); 
     container = quickSort(container, 0, size-1);
 
-    for (int i = 0; i < size; i++){
-        cout << "(" << i << ", " << container[i] << ")" ;
-    }
-    cout << endl;
+//    for (int i = 0; i < size; i++){
+//        cout << "(" << i << ", " << container[i] << ")" ;
+//    }
+//    cout << endl;
 
-    int position = binarySearch(container, 17, 0, size-1);
+    int answer = countTargets(container, -10000, 10000, 20);
 
-
-    cout << "search index: " << position << endl;
+    cout << "answer: " << answer << endl;
 
     return 0;
 }
