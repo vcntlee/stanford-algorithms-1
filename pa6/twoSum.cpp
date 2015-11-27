@@ -73,23 +73,25 @@ bool binarySearch(long long *container, long long suspect, int left, int right){
 int countTargets(long long *container, int lowerRange, int upperRange, int containerSize){
     //set<int> targets;
     int counter = 0;
-    for (int i = 0; i < containerSize; i++){
-        for (int j=lowerRange; j <= upperRange; j++){
+    for (int j=lowerRange; j <= upperRange; j++){
+        for (int i = 0; i < containerSize; i++){
             int result = j - container[i]; 
             if (result > container[i]){
                 if (binarySearch(container, result, i+1, containerSize-1)){
                     //targets.insert(j); 
                     counter++;
+                    break;
                 }
             }
-            else if (result < container[i]){
+            else if (result <= container[i]){
                 if (binarySearch(container, result, 0, i-1)){
                     //targets.insert(j);
                     counter++;
+                    break;
                 }
             }
         }
-        cout << "Round " << i << " done." << endl;
+        cout << "Round " << j << " done." << endl;
     }
     
     return counter;
@@ -97,10 +99,10 @@ int countTargets(long long *container, int lowerRange, int upperRange, int conta
 
 
 int main(){
-    string fname = "pa6_input.txt";
-    int size = 1000000;
-    //string fname = "pa6_test_q1.txt";
-    //int size =20;
+    //string fname = "pa6_input.txt";
+    //int size = 1000000;
+    string fname = "pa6_test_q1.txt";
+    int size =20;
     long long *container = new long long [size];
 
     container = readFile(fname, container); 
