@@ -71,24 +71,27 @@ bool binarySearch(long long *container, long long suspect, int left, int right){
 }
 
 int countTargets(long long *container, int lowerRange, int upperRange, int containerSize){
-    set<int> targets;
+    //set<int> targets;
+    int counter = 0;
     for (int i = 0; i < containerSize; i++){
         for (int j=lowerRange; j <= upperRange; j++){
             int result = j - container[i]; 
             if (result > container[i]){
                 if (binarySearch(container, result, i+1, containerSize-1)){
-                    targets.insert(j); 
+                    //targets.insert(j); 
+                    counter++;
                 }
             }
-            else {
+            else if (result < container[i]){
                 if (binarySearch(container, result, 0, i-1)){
-                    targets.insert(j);
+                    //targets.insert(j);
+                    counter++;
                 }
             }
         }
-        cout << "round " << i << " done." << endl;
     }
-    return targets.size();
+    
+    return counter;
 }
 
 
