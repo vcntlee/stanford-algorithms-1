@@ -89,6 +89,7 @@ int countTargets(long long *container, int lowerRange, int upperRange, int conta
                 }
             }
         }
+        cout << "Round " << i << " done." << endl;
     }
     
     return counter;
