@@ -27,13 +27,14 @@ int * readFile(string fname, int *inputContainer){
 }
 
 
-void calcMedian(int inputSize, int *inputContainer){
+int calcMedian(int inputSize, int *inputContainer){
     int midpoint = inputSize / 2; 
     MaxHeap hLow(midpoint);
     MinHeap hHigh(midpoint);
 
+    int total = 0;
     for (int i = 0; i < inputSize; i++){
-        if (inputContainer[i] <= midpoint ){
+        if (inputContainer[i] < hLow.getMax()){
             hLow.insertNode(inputContainer[i]); 
 
             //rebalance
@@ -42,7 +43,7 @@ void calcMedian(int inputSize, int *inputContainer){
                 hHigh.insertNode(hLow.extractMax());
             }
         }
-        else{
+        else if (inputContainer[i] > hHigh.getMin() ){
             hHigh.insertNode(inputContainer[i]); 
 
             //rebalance
@@ -51,23 +52,37 @@ void calcMedian(int inputSize, int *inputContainer){
                 hLow.insertNode(hHigh.extractMin());
             }
         }
+        else{
+            hLow.insertNode(inputContainer[i]); 
+
+            //rebalance
+
+            if (hLow.getSize() - hHigh.getSize() == 2){
+                hHigh.insertNode(hLow.extractMax());
+            }
+        }
+
         
         //find the median
         if ((hLow.getSize() + hHigh.getSize()) % 2 == 0){
-            cout << inputContainer[i] << " -> " << (hLow.getMax() + hHigh.getMin()) / 2 << endl;
+            //cout << inputContainer[i] << ": " << hLow.getMax() << endl;
+            total += hLow.getMax();
         }
         else{
-            int median = 0;
             if (hLow.getSize() > hHigh.getSize()){
-                median = hLow.getMax();
+                
+                //cout << inputContainer[i] << ": " << hLow.getMax() << endl;
+                total += hLow.getMax();
             }
             else{
-                median = hHigh.getMin();
+                
+                //cout << inputContainer[i] << ": " << hHigh.getMin() << endl;
+                total += hHigh.getMin();
             } 
-            cout<< inputContainer[i] << " -> " << median << endl;
 
         }
     }
+    return total;
 }
 
 void printContainer(int inputSize, int *inputContainer){
@@ -78,12 +93,14 @@ void printContainer(int inputSize, int *inputContainer){
 }
 
 int main(){
-    int size = 12;
-    string fname = "pa6_test_q2.txt";
+    int size = 10000;
+    string fname = "pa6_input2.txt";
     int *inputContainer = new int[size];
 
     inputContainer = readFile(fname, inputContainer); 
-    calcMedian(size, inputContainer);
+    int answer = calcMedian(size, inputContainer);
 
+    cout << "total: " << answer << endl;
+    cout << "answer: " << answer % size << endl;
 
 }
