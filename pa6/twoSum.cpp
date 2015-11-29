@@ -83,7 +83,7 @@ int countTargets(long long int *container, int lowerRange, int upperRange, int c
                     break;
                 }
             }
-            else if (result <= container[i]){
+            else if (result < container[i]){
                 if (binarySearch(container, result, 0, i-1)){
                     //targets.insert(j);
                     counter++;
