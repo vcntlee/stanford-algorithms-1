@@ -75,7 +75,7 @@ int countTargets(long long int *container, int lowerRange, int upperRange, int c
     int counter = 0;
     for (int j=lowerRange; j <= upperRange; j++){
         for (int i = 0; i < containerSize; i++){
-            int result = j - container[i]; 
+            long long int result = j - container[i]; 
             if (result > container[i]){
                 if (binarySearch(container, result, i+1, containerSize-1)){
                     counter++;
