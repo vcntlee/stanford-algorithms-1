@@ -16,7 +16,8 @@ class MinHeap{
         void extractMinHelper(int pos);
         void swapNode(int a, int b);
         void printMinHeap();
-        
+        int getSize(); 
+        int getMin();
 
 
 };

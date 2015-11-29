@@ -83,13 +83,13 @@ int countTargets(long long *container, int lowerRange, int upperRange, int conta
                     break;
                 }
             }
-            else if (result <= container[i]){
-                if (binarySearch(container, result, 0, i-1)){
-                    //targets.insert(j);
-                    counter++;
-                    break;
-                }
-            }
+//            else if (result <= container[i]){
+//                if (binarySearch(container, result, 0, i-1)){
+//                    //targets.insert(j);
+//                    counter++;
+//                    break;
+//                }
+//            }
         }
         cout << "Round " << j << " done." << endl;
     }

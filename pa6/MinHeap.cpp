@@ -52,6 +52,9 @@ void MinHeap::insertNodeHelper(int pos){
 }
 
 int MinHeap::extractMin(){
+    if (this -> getSize() == 0){
+        return 0;
+    }
     int minimum = minContainer[0];
     swapNode(0, curSize);
     minContainer[curSize] = -1;
@@ -84,6 +87,14 @@ void MinHeap::extractMinHelper(int pos){
             }
         }
     }
+}
+
+int MinHeap::getMin(){
+    return minContainer[0];
+}
+
+int MinHeap::getSize(){
+    return curSize + 1;
 }
 
 void MinHeap::printMinHeap(){

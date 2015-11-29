@@ -52,6 +52,9 @@ void MaxHeap::insertNodeHelper(int pos){
 }
 
 int MaxHeap::extractMax(){
+    if (this -> getSize() == 0){
+        return 0;
+    }
     int maximum = maxContainer[0]; 
     swapNode(0, curSize);
     maxContainer[curSize] = -1;
@@ -84,6 +87,14 @@ void MaxHeap::extractMaxHelper(int pos){
             }
         }
     }
+}
+
+int MaxHeap::getMax(){
+    return maxContainer[0];
+}
+
+int MaxHeap::getSize(){
+    return curSize + 1;
 }
 
 void MaxHeap::printMaxHeap(){

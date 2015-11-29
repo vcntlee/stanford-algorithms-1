@@ -16,6 +16,8 @@ class MaxHeap{
         void extractMaxHelper(int pos);
         void swapNode(int a, int b);
         void printMaxHeap();
+        int getSize();
+        int getMax();
 
 };
 

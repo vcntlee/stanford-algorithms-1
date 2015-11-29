@@ -1,7 +1,7 @@
-mid: medianMaintanance.o MinHeap.o MaxHeap.o
-	g++ medianMaintanance.o MinHeap.o MaxHeap.o -o mid
-mid.o: medianMaintanance.cpp MinHeap.cpp MaxHeap.cpp
-	g++ -c medianMaintance.cpp MinHeap.cpp MaxHeap.cpp
+mid: medianMaintainance.o MinHeap.o MaxHeap.o
+	g++ medianMaintainance.o MinHeap.o MaxHeap.o -o mid
+mid.o: medianMaintainance.cpp MinHeap.cpp MaxHeap.cpp
+	g++ -c medianMaintainance.cpp MinHeap.cpp MaxHeap.cpp
 
 main: main.o MinHeap.o MaxHeap.o
 	g++ main.o MinHeap.o MaxHeap.o -o main
@@ -18,4 +18,4 @@ twoSum.o: twoSum.cpp
 	g++ -c twoSum.cpp
 
 clean:
-	rm -rf *.out *.o two *.dSYM main
+	rm -rf *.out *.o two *.dSYM main mid
