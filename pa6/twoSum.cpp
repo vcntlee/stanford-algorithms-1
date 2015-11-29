@@ -5,7 +5,7 @@
 
 using namespace std;
 
-long long * readFile(string fname, long long *container){
+long long int * readFile(string fname, long long int *container){
     ifstream infile;
     infile.open(fname.c_str());
 
@@ -14,7 +14,7 @@ long long * readFile(string fname, long long *container){
         int i = 0;
         while (getline(infile, line)){
             istringstream iss(line);
-            long long element; 
+            long long int element; 
             iss >> element;
             container[i] = element;
             i++;
@@ -24,13 +24,13 @@ long long * readFile(string fname, long long *container){
     return container;
 }
 
-void swapped(long long *container, int left, int right){
-    long long temp = container[left]; 
+void swapped(long long int *container, int left, int right){
+    long long int temp = container[left]; 
     container[left] = container[right]; 
     container[right] = temp;
 }
 
-int pivoted(long long *container, int left, int right){
+int pivoted(long long int *container, int left, int right){
     int j = left; 
     for (int i = left; i < right; i++){
         if (container[i] <= container[right]){
@@ -42,7 +42,7 @@ int pivoted(long long *container, int left, int right){
     return j;
 }
 
-long long * quickSort(long long *container, int left, int right){
+long long int * quickSort(long long int *container, int left, int right){
     if (left >= right){
         return container;
     }
@@ -54,7 +54,7 @@ long long * quickSort(long long *container, int left, int right){
     }
 }
 
-bool binarySearch(long long *container, long long suspect, int left, int right){
+bool binarySearch(long long int *container, long long int suspect, int left, int right){
     int mid = (left + right) / 2; 
     if (container[mid] == suspect)
         return true;
@@ -70,7 +70,7 @@ bool binarySearch(long long *container, long long suspect, int left, int right){
 
 }
 
-int countTargets(long long *container, int lowerRange, int upperRange, int containerSize){
+int countTargets(long long int *container, int lowerRange, int upperRange, int containerSize){
     //set<int> targets;
     int counter = 0;
     for (int j=lowerRange; j <= upperRange; j++){
@@ -83,13 +83,13 @@ int countTargets(long long *container, int lowerRange, int upperRange, int conta
                     break;
                 }
             }
-//            else if (result <= container[i]){
-//                if (binarySearch(container, result, 0, i-1)){
-//                    //targets.insert(j);
-//                    counter++;
-//                    break;
-//                }
-//            }
+            else if (result <= container[i]){
+                if (binarySearch(container, result, 0, i-1)){
+                    //targets.insert(j);
+                    counter++;
+                    break;
+                }
+            }
         }
         cout << "Round " << j << " done." << endl;
     }
@@ -103,7 +103,7 @@ int main(){
     //int size = 1000000;
     string fname = "pa6_test_q1.txt";
     int size =20;
-    long long *container = new long long [size];
+    long long int *container = new long long int [size];
 
     container = readFile(fname, container); 
     container = quickSort(container, 0, size-1);
