@@ -6,6 +6,7 @@ using namespace std;
 
 int main(){
     MaxHeap maxheap(10);
+    cout << "minimum " << maxheap.getMax() << endl;
     maxheap.insertNode(8);
     maxheap.insertNode(3);
     maxheap.insertNode(10);
@@ -16,6 +17,7 @@ int main(){
     maxheap.insertNode(9);
     maxheap.insertNode(19);
     maxheap.insertNode(1);
+    cout << "size of maxheap: " << maxheap.getSize() << endl;
 
     maxheap.printMaxHeap();
 
