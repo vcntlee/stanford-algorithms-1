@@ -2,6 +2,7 @@
 #include <fstream>
 #include <sstream>
 #include <set>
+#include <time.h>
 
 using namespace std;
 
@@ -71,21 +72,18 @@ bool binarySearch(long long int *container, long long int suspect, int left, int
 }
 
 int countTargets(long long int *container, int lowerRange, int upperRange, int containerSize){
-    //set<int> targets;
     int counter = 0;
     for (int j=lowerRange; j <= upperRange; j++){
         for (int i = 0; i < containerSize; i++){
             int result = j - container[i]; 
             if (result > container[i]){
                 if (binarySearch(container, result, i+1, containerSize-1)){
-                    //targets.insert(j); 
                     counter++;
                     break;
                 }
             }
             else if (result < container[i]){
                 if (binarySearch(container, result, 0, i-1)){
-                    //targets.insert(j);
                     counter++;
                     break;
                 }
@@ -93,29 +91,29 @@ int countTargets(long long int *container, int lowerRange, int upperRange, int c
         }
         cout << "Round " << j << " done." << endl;
     }
-    
     return counter;
 }
 
 
 int main(){
+    clock_t t1, t2;
+    t1 = clock();
     string fname = "pa6_input.txt";
     int size = 1000000;
-    //string fname = "pa6_test_q1.txt";
-    //int size =20;
     long long int *container = new long long int [size];
 
     container = readFile(fname, container); 
     container = quickSort(container, 0, size-1);
 
-//    for (int i = 0; i < size; i++){
-//        cout << "(" << i << ", " << container[i] << ")" ;
-//    }
-//    cout << endl;
-
     int answer = countTargets(container, -10000, 10000, size);
 
+    t2 = clock();
+    double diff ((float)t2 - (float)t1);
+    double sec = diff/CLOCKS_PER_SEC;
+    double minute = sec / 60; 
+
     cout << "answer: " << answer << endl;
+    cout << "time taken: " << minute << endl;
 
     return 0;
 }
