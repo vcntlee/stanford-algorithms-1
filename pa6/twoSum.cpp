@@ -99,10 +99,10 @@ int countTargets(long long int *container, int lowerRange, int upperRange, int c
 
 
 int main(){
-    //string fname = "pa6_input.txt";
-    //int size = 1000000;
-    string fname = "pa6_test_q1.txt";
-    int size =20;
+    string fname = "pa6_input.txt";
+    int size = 1000000;
+    //string fname = "pa6_test_q1.txt";
+    //int size =20;
     long long int *container = new long long int [size];
 
     container = readFile(fname, container); 
