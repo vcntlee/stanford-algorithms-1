@@ -90,7 +90,10 @@ void MinHeap::extractMinHelper(int pos){
 }
 
 int MinHeap::getMin(){
-    return minContainer[0];
+    if (this -> getSize() == 0)
+        return -1;
+    else
+        return minContainer[0];
 }
 
 int MinHeap::getSize(){

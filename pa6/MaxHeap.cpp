@@ -90,7 +90,10 @@ void MaxHeap::extractMaxHelper(int pos){
 }
 
 int MaxHeap::getMax(){
-    return maxContainer[0];
+    if (this -> getSize() == 0)
+        return 100000;
+    else 
+        return maxContainer[0];
 }
 
 int MaxHeap::getSize(){
