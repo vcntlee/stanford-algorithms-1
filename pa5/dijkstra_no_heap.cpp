@@ -108,6 +108,7 @@ class DijkstraSolution{
         int * dijkstra(){
             while (ch.curSize != 0){
                 Node minimum = findMin(); 
+                cout << "minimum.dist " << minimum.dist << endl;
                 results[minimum.v] = minimum.dist; 
 
                 for (list<Node>::iterator it = container[minimum.v].begin(); it != container[minimum.v].end(); it++){
@@ -115,6 +116,7 @@ class DijkstraSolution{
                         Node inserted;
                         inserted.dist = *it + minimum;
                         inserted.v = (*it).v;
+                        cout << "inserted.dist " << inserted.dist << endl;
                         ch.minHeap[(*it).v] = inserted;
                         
                     }
