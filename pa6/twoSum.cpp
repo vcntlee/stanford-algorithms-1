@@ -98,8 +98,10 @@ int countTargets(long long int *container, int lowerRange, int upperRange, int c
 int main(){
     clock_t t1, t2;
     t1 = clock();
-    string fname = "pa6_input.txt";
-    int size = 1000000;
+    //string fname = "pa6_input.txt";
+    //int size = 1000000;
+    string fname = "pa6_test_q1.txt";
+    int size = 20;
     long long int *container = new long long int [size];
 
     container = readFile(fname, container); 
@@ -111,6 +113,8 @@ int main(){
     double diff ((float)t2 - (float)t1);
     double sec = diff/CLOCKS_PER_SEC;
     double minute = sec / 60; 
+
+    delete[] container;
 
     cout << "answer: " << answer << endl;
     cout << "time taken: " << minute << endl;
