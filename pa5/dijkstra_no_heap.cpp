@@ -145,7 +145,7 @@ class DijkstraSolution{
 int main(){
     //DijkstraSolution ds("pa5_input.txt", 1, 201);
 
-    DijkstraSolution ds("pa5_test.txt", 1, 9);
+    DijkstraSolution ds("pa5_test1.txt", 1, 9);
 
     ds.dijkstra(); 
     ds.printResults();
